@@ -1,0 +1,11 @@
+--- jpeg-6b/ljpeg-6b.patch.orig	1999-04-27 21:09:56.000000000 +0200
++++ jpeg-6b/ljpeg-6b.patch	2008-01-27 22:19:32.945258488 +0100
+@@ -12055,7 +12055,7 @@
+   # compression library object files
+   CLIBOBJECTS= jcapimin.$(O) jcapistd.$(O) jctrans.$(O) jcparam.$(O) \
+           jdatadst.$(O) jcinit.$(O) jcmaster.$(O) jcmarker.$(O) jcmainct.$(O) \
+-!         jcprepct.$(O) jclossls.$(O) jclossy.o jccoefct.$(O) jccolor.$(O) \
++!         jcprepct.$(O) jclossls.$(O) jclossy.$(O) jccoefct.$(O) jccolor.$(O) \
+ ! 	jcsample.$(O) jchuff.$(O) jcphuff.$(O) jcshuff.$(O) jclhuff.$(O) \
+ ! 	jcpred.$(O) jcscale.$(O) jcdiffct.$(O) jcdctmgr.$(O) jfdctfst.$(O) \
+ ! 	jfdctflt.$(O) jfdctint.$(O)
