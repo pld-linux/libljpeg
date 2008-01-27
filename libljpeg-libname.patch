@@ -1,0 +1,70 @@
+--- jpeg-6b/makefile.cfg.orig	2008-01-27 22:07:18.991432000 +0100
++++ jpeg-6b/makefile.cfg	2008-01-27 22:09:11.513845130 +0100
+@@ -139,7 +139,7 @@
+ TROBJECTS= jpegtran.$(O) rdswitch.$(O) cdjpeg.$(O) transupp.$(O)
+ 
+ 
+-all: @A2K_DEPS@ libjpeg.$(A) cjpeg djpeg jpegtran rdjpgcom wrjpgcom
++all: @A2K_DEPS@ libljpeg.$(A) cjpeg djpeg jpegtran rdjpgcom wrjpgcom
+ 
+ # Special compilation rules to support ansi2knr and libtool.
+ .SUFFIXES: .lo .la
+@@ -167,26 +167,26 @@
+ # the library:
+ 
+ # without libtool:
+-libjpeg.a: @A2K_DEPS@ $(LIBOBJECTS)
+-	$(RM) libjpeg.a
+-	$(AR) libjpeg.a  $(LIBOBJECTS)
+-	$(AR2) libjpeg.a
++libljpeg.a: @A2K_DEPS@ $(LIBOBJECTS)
++	$(RM) libljpeg.a
++	$(AR) libljpeg.a  $(LIBOBJECTS)
++	$(AR2) libljpeg.a
+ 
+ # with libtool:
+-libjpeg.la: @A2K_DEPS@ $(LIBOBJECTS)
+-	$(LIBTOOL) --tag=CC --mode=link $(CC) -o libjpeg.la $(LIBOBJECTS) \
++libljpeg.la: @A2K_DEPS@ $(LIBOBJECTS)
++	$(LIBTOOL) --tag=CC --mode=link $(CC) -o libljpeg.la $(LIBOBJECTS) \
+ 		-rpath $(libdir) -version-info $(JPEG_LIB_VERSION)
+ 
+ # sample programs:
+ 
+-cjpeg: $(COBJECTS) libjpeg.$(A)
+-	$(LN) $(LDFLAGS) -o cjpeg $(COBJECTS) libjpeg.$(A) $(LDLIBS)
++cjpeg: $(COBJECTS) libljpeg.$(A)
++	$(LN) $(LDFLAGS) -o cjpeg $(COBJECTS) libljpeg.$(A) $(LDLIBS)
+ 
+-djpeg: $(DOBJECTS) libjpeg.$(A)
+-	$(LN) $(LDFLAGS) -o djpeg $(DOBJECTS) libjpeg.$(A) $(LDLIBS)
++djpeg: $(DOBJECTS) libljpeg.$(A)
++	$(LN) $(LDFLAGS) -o djpeg $(DOBJECTS) libljpeg.$(A) $(LDLIBS)
+ 
+-jpegtran: $(TROBJECTS) libjpeg.$(A)
+-	$(LN) $(LDFLAGS) -o jpegtran $(TROBJECTS) libjpeg.$(A) $(LDLIBS)
++jpegtran: $(TROBJECTS) libljpeg.$(A)
++	$(LN) $(LDFLAGS) -o jpegtran $(TROBJECTS) libljpeg.$(A) $(LDLIBS)
+ 
+ rdjpgcom: rdjpgcom.$(O)
+ 	$(LN) $(LDFLAGS) -o rdjpgcom rdjpgcom.$(O) $(LDLIBS)
+@@ -208,8 +208,8 @@
+ 	$(INSTALL_DATA) $(srcdir)/rdjpgcom.1 $(DESTDIR)$(mandir)/$(manprefix)rdjpgcom.$(manext)
+ 	$(INSTALL_DATA) $(srcdir)/wrjpgcom.1 $(DESTDIR)$(mandir)/$(manprefix)wrjpgcom.$(manext)
+ 
+-install-lib: libjpeg.$(A) install-headers
+-	$(INSTALL_LIB) libjpeg.$(A) $(DESTDIR)$(libdir)/$(binprefix)libjpeg.$(A)
++install-lib: libljpeg.$(A) install-headers
++	$(INSTALL_LIB) libljpeg.$(A) $(DESTDIR)$(libdir)/$(binprefix)libljpeg.$(A)
+ 
+ install-headers: jconfig.h
+ 	$(INSTALL_DATA) jconfig.h $(DESTDIR)$(includedir)/jconfig.h
+@@ -218,7 +218,7 @@
+ 	$(INSTALL_DATA) $(srcdir)/jerror.h $(DESTDIR)$(includedir)/jerror.h
+ 
+ clean:
+-	$(RM) *.o *.lo libjpeg.a libjpeg.la
++	$(RM) *.o *.lo libljpeg.a libljpeg.la
+ 	$(RM) cjpeg djpeg jpegtran rdjpgcom wrjpgcom
+ 	$(RM) ansi2knr core testout* config.log config.status
+ 	$(RM) -r knr .libs _libs
