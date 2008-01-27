@@ -17,7 +17,7 @@ Source0:	ftp://ftp.uu.net/graphics/jpeg/jpegsrc.v%{version}.tar.gz
 Source1:	http://www.mif.pg.gda.pl/homepages/ankry/man-PLD/libjpeg-non-english-man-pages.tar.bz2
 # Source1-md5:	d6342c015a489de275ada637a77dc2b0
 Source2:	ftp://ftp.simplesystems.org/pub/ImageMagick/delegates/ljpeg-6b.tar.gz
-# Source2-md5:	4f13107f5365803b0f2d1db1b33eb285
+# Source2-md5:	8b0fbc6e032a47e876c84506f8c87d9e
 Patch0:		libjpeg-DESTDIR.patch
 Patch1:		libjpeg-arm.patch
 Patch2:		libjpeg-include.patch
