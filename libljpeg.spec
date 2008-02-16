@@ -1,10 +1,9 @@
 # TODO
-# - adjust crop patch to apply on ljpeg
 # - support for lossless process with arighmetic coding?
 #
 # Conditional build:
-%bcond_without	arith	# arithmetic coding support ([errors ABI change], patent problems somewhere)
-%bcond_with	crop	# lossless cropping support ([errors ABI change])
+%bcond_without	arith	# arithmetic coding support (error codes ABI change, IBM patents in USA)
+%bcond_without	crop	# lossless cropping support (error codes ABI change)
 #
 Summary:	Library for handling different JPEG files, including lossless
 Summary(pl.UTF-8):	Biblioteka do manipulacji plikami w formacie JPEG włącznie z bezstratnymi
@@ -29,7 +28,7 @@ Patch6:		%{name}-fix.patch
 # from http://sylvana.net/jpeg-ari/jpeg-ari-28mar98.tar.gz
 Patch7:		%{name}-arith.patch
 # from http://sylvana.net/jpegcrop/croppatch.tar.gz
-Patch8:		libjpeg-crop.patch
+Patch8:		%{name}-crop.patch
 URL:		http://www.ijg.org/
 BuildRequires:	libtool
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
