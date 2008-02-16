@@ -1,15 +1,16 @@
 # TODO
-# - adjust arith and crop patches to apply on ljpeg
+# - adjust crop patch to apply on ljpeg
+# - support for lossless process with arighmetic coding?
 #
 # Conditional build:
-%bcond_with	arith	# arithmetic coding support (changes error codes in ABI, patent problems somewhere)
-%bcond_with	crop	# lossless cropping support (changes error codes in ABI)
+%bcond_without	arith	# arithmetic coding support ([errors ABI change], patent problems somewhere)
+%bcond_with	crop	# lossless cropping support ([errors ABI change])
 #
 Summary:	Library for handling different JPEG files, including lossless
 Summary(pl.UTF-8):	Biblioteka do manipulacji plikami w formacie JPEG włącznie z bezstratnymi
 Name:		libljpeg
 Version:	6b
-Release:	27
+Release:	0.1
 License:	distributable
 Group:		Libraries
 Source0:	ftp://ftp.uu.net/graphics/jpeg/jpegsrc.v%{version}.tar.gz
@@ -26,7 +27,7 @@ Patch4:		libjpeg-libtool.patch
 Patch5:		%{name}-libname.patch
 Patch6:		%{name}-fix.patch
 # from http://sylvana.net/jpeg-ari/jpeg-ari-28mar98.tar.gz
-Patch7:		libjpeg-arith.patch
+Patch7:		%{name}-arith.patch
 # from http://sylvana.net/jpegcrop/croppatch.tar.gz
 Patch8:		libjpeg-crop.patch
 URL:		http://www.ijg.org/
@@ -158,8 +159,8 @@ tekstowe dołączone do pliku JPEG, a wrjpgcom wstawia takie komentarze.
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
-%{?with_arith:%patch6 -p1}
-%{?with_crop:%patch7 -p1}
+%{?with_arith:%patch7 -p1}
+%{?with_crop:%patch8 -p1}
 
 cp -f %{_datadir}/libtool/config.sub .
 
