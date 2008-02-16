@@ -9,7 +9,7 @@ Summary:	Library for handling different JPEG files, including lossless
 Summary(pl.UTF-8):	Biblioteka do manipulacji plikami w formacie JPEG włącznie z bezstratnymi
 Name:		libljpeg
 Version:	6b
-Release:	0.1
+Release:	1
 License:	distributable
 Group:		Libraries
 Source0:	ftp://ftp.uu.net/graphics/jpeg/jpegsrc.v%{version}.tar.gz
